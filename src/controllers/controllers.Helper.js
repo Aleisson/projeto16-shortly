@@ -26,3 +26,5 @@ function createResponse(res, body) {
 }
 
 export { serverError, okResponse, badResquestResponse, createResponse }
+
+// const token = req.headers.authorization?.replace('Bearer ', '')
