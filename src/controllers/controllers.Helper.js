@@ -7,6 +7,12 @@ function serverError(res, error) {
 
 }
 
+function notImplemented(res) {
+
+    return res.sendStatus(STATUS_CODE.NOT_IMPLEMENTED);
+
+}
+
 function okResponse(res, body) {
 
     return res.send(body);
@@ -25,6 +31,6 @@ function createResponse(res, body) {
 
 }
 
-export { serverError, okResponse, badResquestResponse, createResponse }
+export { serverError, okResponse, badResquestResponse, createResponse, notImplemented }
 
 // const token = req.headers.authorization?.replace('Bearer ', '')

@@ -1,14 +1,15 @@
 import express from 'express'
+import { postUrlsShorten, getUrlsId, getUrlsOpenShortUrl, deleteUrlsId } from '../controllers/urls.Controllers.js';
 
 const router = express.Router();
 
 
-router.post('/urls/shorten', (req, res) => { res.send('<h1>urls/shorten</h1>') })
+router.post('/urls/shorten', postUrlsShorten)
 
-router.get('/urls/:id', (req, res) => { res.send('<h1>urls/:id</h1>') })
+router.get('/urls/:id', getUrlsId)
 
-router.get('/urls/open/:shortUrl', (req, res) => { res.send('<h1>urls/open/:shortUrl</h1>') })
+router.get('/urls/open/:shortUrl', getUrlsOpenShortUrl)
 
-router.delete('/urls/:id', (req, res) => { res.send('<h1>urls/:id</h1>') })
+router.delete('/urls/:id', deleteUrlsId)
 
 export default router;

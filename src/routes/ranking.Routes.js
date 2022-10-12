@@ -1,9 +1,9 @@
 import express from 'express';
-
+import { getRanking } from '../controllers/ranking.Controllers.js';
 
 const router = express.Router();
 
-router.get('/ranking', (req, res) => { res.send('<h1>/ranking</h1>') })
+router.get('/ranking', getRanking);
 
 
 export default router;
