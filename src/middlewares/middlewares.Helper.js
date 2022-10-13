@@ -13,16 +13,27 @@ function filterBearer(req) {
 
 }
 
+function serverError(res, error) {
+
+    console.error(error);
+    return res.sendStatus(STATUS_CODE.SERVER_ERROR);
+
+}
+
 function badResquestResponse(res, body) {
 
     return res.status(STATUS_CODE.BAD_REQUEST).send(body);
 
 }
 
-function unprocessableEntityReponse(res, body) {
-    const erros = body.map(elem => elem.message)
-
-    return res.status(STATUS_CODE.UNPROCESSABLE_ENTITY).send(erros);
+function unprocessableEntityResponse(res, body) {
+    return res.status(STATUS_CODE.UNPROCESSABLE_ENTITY).send(body);
 }
 
-export { notImplemented, filterBearer, badResquestResponse, unprocessableEntityReponse }
+function conflictResponse(res) {
+
+    return res.sendStatus(STATUS_CODE.CONFLICT)
+
+}
+
+export { notImplemented, filterBearer, serverError,badResquestResponse, unprocessableEntityResponse, conflictResponse }

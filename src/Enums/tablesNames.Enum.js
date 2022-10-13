@@ -1,5 +1,5 @@
 const TABLES_NAMES = Object.freeze({
-    TABLE: "table",
+    USERS: "users",
 });
 
 export { TABLES_NAMES }
