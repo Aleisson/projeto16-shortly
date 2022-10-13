@@ -18,20 +18,21 @@ async function signUpMiddleware(req, res, next) {
 
     const { email } = req.body;
     try {
-        console.log(email);
+        
         const checkEmail = await connection
             .query(`SELECT * FROM ${TABLES_NAMES.USERS} WHERE email = $1 ;`, [email]);
-        console.log(checkEmail.rowCount);
+      
+       
         if (checkEmail.rowCount) {
             return conflictResponse(res);
         }
 
+        res.locals.user = req.body;
+        next();
+
     } catch (error) {
         return serverError(res, error);
     }
-
-
-    next();
 
 }
 
