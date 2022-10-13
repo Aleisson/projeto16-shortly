@@ -19,9 +19,10 @@ function badResquestResponse(res, body) {
 
 }
 
-function unprocessableEntityReponse(res, body){
+function unprocessableEntityReponse(res, body) {
+    const erros = body.map(elem => elem.message)
 
-    return res.status(STATUS_CODE.UNPROCESSABLE_ENTITY).send(body);
+    return res.status(STATUS_CODE.UNPROCESSABLE_ENTITY).send(erros);
 }
 
-export { notImplemented, filterBearer, badResquestResponse}
+export { notImplemented, filterBearer, badResquestResponse, unprocessableEntityReponse }
