@@ -7,4 +7,21 @@ function notImplemented(res) {
 
 }
 
-export { notImplemented }
+function filterBearer(req) {
+
+    return req.headers.authorization?.replace('Bearer ', '');
+
+}
+
+function badResquestResponse(res, body) {
+
+    return res.status(STATUS_CODE.BAD_REQUEST).send(body);
+
+}
+
+function unprocessableEntityReponse(res, body){
+
+    return res.status(STATUS_CODE.UNPROCESSABLE_ENTITY).send(body);
+}
+
+export { notImplemented, filterBearer, badResquestResponse}
