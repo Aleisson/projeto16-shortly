@@ -4,7 +4,7 @@ import { singUpSchema } from '../schemas/authotizantion.Schemas.js';
 import { TABLES_NAMES } from '../Enums/tablesNames.Enum.js';
 
 
-async function signUpMiddleware(req, res, next) {
+async function signUp(req, res, next) {
 
 
     const isValidBody = singUpSchema.validate(req.body, { abortEarly: false });
@@ -38,7 +38,7 @@ async function signUpMiddleware(req, res, next) {
 
 
 
-async function signInMiddleware(req, res, next) {
+async function signIn(req, res, next) {
 
 
     return notImplemented(res);
@@ -47,4 +47,4 @@ async function signInMiddleware(req, res, next) {
 
 }
 
-export { signUpMiddleware, signInMiddleware }
+export { signUp, signIn }

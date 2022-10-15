@@ -1,12 +1,12 @@
 import express from 'express';
-import { signUp, signIn } from '../controllers/authorization.Controllers.js';
-import { signInMiddleware, signUpMiddleware } from '../middlewares/authorization.Middlewares.js';
+import * as controllers from '../controllers/authorization.Controllers.js';
+import * as middlewares from '../middlewares/authorization.Middlewares.js';
 
 const router = express.Router();
 
 
-router.post('/signup', signUpMiddleware, signUp);
+router.post('/signup', middlewares.signUp, controllers.signUp);
 
-router.post('/signin', signInMiddleware, signIn);
+router.post('/signin', middlewares.signIn, controllers.signIn);
 
 export default router;

@@ -1,6 +1,6 @@
 import { notImplemented } from "./middlewares.Helper.js";
 
-async function userMeMiddleware(req, res, next) {
+async function getUserMe(req, res, next) {
 
 
     return notImplemented(res);
@@ -8,4 +8,4 @@ async function userMeMiddleware(req, res, next) {
     next();
 }
 
-export { userMeMiddleware }
+export { getUserMe }

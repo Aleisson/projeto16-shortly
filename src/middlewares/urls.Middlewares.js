@@ -1,7 +1,7 @@
 import { notImplemented } from "./middlewares.Helper.js";
 
 
-async function urlsShortenMiddlewares(req, res, next) {
+async function urlsShorten(req, res, next) {
 
     return notImplemented(res);
 
@@ -9,7 +9,7 @@ async function urlsShortenMiddlewares(req, res, next) {
 
 }
 
-async function urlsIdMiddlewares(req, res, next) {
+async function urlsId(req, res, next) {
 
     return notImplemented(res);
 
@@ -17,7 +17,7 @@ async function urlsIdMiddlewares(req, res, next) {
 }
 
 
-async function urlsOpenShortUrlMiddleware(req, res, next) {
+async function urlsOpenShortUrl(req, res, next) {
 
     return notImplemented(res);
 
@@ -27,4 +27,4 @@ async function urlsOpenShortUrlMiddleware(req, res, next) {
 
 
 
-export { urlsShortenMiddlewares, urlsIdMiddlewares, urlsOpenShortUrlMiddleware }
+export { urlsShorten, urlsId, urlsOpenShortUrl }

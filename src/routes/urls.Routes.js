@@ -1,16 +1,16 @@
 import express from 'express'
-import { postUrlsShorten, getUrlsId, getUrlsOpenShortUrl, deleteUrlsId } from '../controllers/urls.Controllers.js';
-import { urlsIdMiddlewares, urlsShortenMiddlewares, urlsOpenShortUrlMiddleware } from '../middlewares/urls.Middlewares.js'
+import * as controllers from '../controllers/urls.Controllers.js';
+import * as middlewares from '../middlewares/urls.Middlewares.js'
 
 const router = express.Router();
 
 
-router.post('/urls/shorten', urlsShortenMiddlewares, postUrlsShorten)
+router.post('/urls/shorten', middlewares.urlsShorten, controllers.postUrlsShorten)
 
-router.get('/urls/:id', urlsIdMiddlewares, getUrlsId)
+router.get('/urls/:id', middlewares.urlsId, controllers.getUrlsId)
 
-router.get('/urls/open/:shortUrl', urlsOpenShortUrlMiddleware, getUrlsOpenShortUrl)
+router.get('/urls/open/:shortUrl', middlewares.urlsOpenShortUrl, controllers.getUrlsOpenShortUrl)
 
-router.delete('/urls/:id', urlsIdMiddlewares, deleteUrlsId)
+router.delete('/urls/:id', middlewares.urlsId, controllers.deleteUrlsId)
 
 export default router;
