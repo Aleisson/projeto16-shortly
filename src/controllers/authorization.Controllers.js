@@ -1,6 +1,5 @@
-import { serverError, createResponse } from "./controllers.Helper.js";
-import { TABLES_NAMES } from "../Enums/tablesNames.Enum.js";
-import connection from "../database/database.js";
+import * as helper from "./controllers.Helper.js";
+import * as repository from "../repositories/authorization.Repository.js";
 import bcrypt from 'bcrypt';
 import { v4 as uuid } from 'uuid';
 
@@ -12,13 +11,13 @@ async function signUp(req, res) {
 
     try {
 
-        connection
-            .query(`INSERT INTO ${TABLES_NAMES.USERS} (name, email, hash_password)
-                VALUES($1, $2, $3)`, [name, email, passwordHash]);
-
-        return createResponse(res, { message: 'Created' });
+        const response = await repository.insertUsers(name, email, passwordHash);
+        if(response.rowCount){
+            return helper.createResponse(res, { message: 'Created' });
+        }
+        return helper.badResquestResponse(res, {message: 'Erro nos parametros'});
     } catch (error) {
-        return serverError(res, error);
+        return helper.serverError(res, error);
     }
 
 }
@@ -26,7 +25,7 @@ async function signUp(req, res) {
 async function signIn(req, res) {
 
 
-    return notImplemented(res);
+    return helper.notImplemented(res);
 
 }
 
