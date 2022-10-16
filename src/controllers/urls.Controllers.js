@@ -3,6 +3,8 @@ import { notImplemented } from './controllers.Helper.js'
 
 async function postUrlsShorten(req, res) {
 
+    const userId = res.locals.userId;
+    console.log(userId);
 
     return notImplemented(res);
 

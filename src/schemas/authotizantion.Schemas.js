@@ -1,7 +1,5 @@
 import Joi from "joi";
 
-
-
 const singUpSchema = Joi.object({
 
     name: Joi.string().required().messages({
