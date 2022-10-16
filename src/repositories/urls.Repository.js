@@ -12,6 +12,12 @@ async function insertUrls(userId, url, shortUrl) {
 
 }
 
+async function selectUrl(url) {
+    return connection
+        .query(`SELECT * FROM ${TABLES_NAMES.URLS}
+            WHERE url = $1 ;` , [url]);
+}
+
 
 async function selectUrlsId(id) {
 
@@ -22,5 +28,44 @@ async function selectUrlsId(id) {
 
 }
 
+async function selectUrlIdUserId(id, userId) {
 
-export { insertUrls, selectUrlsId }
+    return connection
+        .query(`SELECT * FROM ${TABLES_NAMES.URLS}
+                WHERE id = $1 AND "userId" = $2 ;` , [id, userId]);
+}
+
+async function selectUrlsShortUrl(shortUrl) {
+
+    return connection
+        .query(`SELECT * FROM ${TABLES_NAMES.URLS}
+                WHERE   short_url = $1; `, [shortUrl]);
+}
+
+async function updateVisite(id, visiteCount) {
+
+    return connection
+        .query(`UPDATE ${TABLES_NAMES.URLS}
+            SET visite_count = $2
+            WHERE id = $1;`, [id, visiteCount + 1])
+
+}
+
+async function deleteUrls(id) {
+
+    return connection
+        .query(`DELETE FROM ${TABLES_NAMES.URLS}
+                WHERE id = $1;`, [id]);
+
+}
+
+
+export {
+    insertUrls,
+    selectUrl,
+    selectUrlsId,
+    selectUrlsShortUrl,
+    updateVisite,
+    selectUrlIdUserId,
+    deleteUrls
+}

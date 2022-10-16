@@ -11,7 +11,20 @@ async function urlsShorten(req, res, next) {
         return helper.unauthorizedResponse(res)
     }
 
+    const { url } = req.body;
+    try {
 
+        const response = await repository.selectUrl(url)
+
+        if (response.rowCount) {
+            return helper.conflictResponse(res);
+        }
+
+    } catch (error) {
+        return helper.serverError(res, error);
+    }
+
+    
     res.locals.url = req.body;
     next();
 }
@@ -19,7 +32,7 @@ async function urlsShorten(req, res, next) {
 async function urlsId(req, res, next) {
 
     const { id } = req.params;
-    
+
     try {
         const url = await repository.selectUrlsId(id);
         if (!url.rowCount) {
@@ -32,15 +45,56 @@ async function urlsId(req, res, next) {
     }
 }
 
+async function deleteUrlsId(req, res, next) {
+
+    const { id } = req.params;
+    const userId = res.locals.userId;
+    
+    try {
+        const url = await repository.selectUrlsId(id);
+        if (!url.rowCount) {
+            return helper.notFoundReponse(res);
+        }
+        
+        const urlUser = await repository.selectUrlIdUserId(id, userId);
+        if (!urlUser.rowCount) {
+            return helper.unauthorizedResponse(res)
+        }
+       
+        res.locals.urlUser = urlUser.rows.at(0);
+        next();
+    } catch (error) {
+        return helper.serverError(res, error);
+    }
+}
+
 
 async function urlsOpenShortUrl(req, res, next) {
 
-    return notImplemented(res);
+    const { shortUrl } = req.params
 
-    next();
+
+    try {
+        const url = await repository.selectUrlsShortUrl(shortUrl);
+
+        if (!url.rowCount) {
+            return helper.notFoundReponse(res);
+        }
+        res.locals.url = url.rows.at(0);
+        next();
+    } catch (error) {
+        return helper.serverError(res, error);
+    }
+
+
 }
 
 
 
 
-export { urlsShorten, urlsId, urlsOpenShortUrl }
+export {
+    urlsShorten,
+    urlsId,
+    urlsOpenShortUrl,
+    deleteUrlsId
+}

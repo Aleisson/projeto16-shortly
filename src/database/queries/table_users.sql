@@ -1,7 +1,8 @@
 CREATE TABLE
-  "users"(
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR(80) NOT NULL,
-    "email" VARCHAR(120) NOT NULL UNIQUE,
-    "hash_password" TEXT NOT NULL
+  users (
+    id serial PRIMARY KEY,
+    name character varying(80) NOT NULL,
+    email character varying(120) NOT NULL,
+    hash_password text NOT NULL,
+    "creatAt" TIMESTAMP DEFAULT  CURRENT_TIMESTAMP
   );

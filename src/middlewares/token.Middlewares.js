@@ -12,8 +12,6 @@ async function tokenAuthorization(req, res, next) {
     try {
         const { userId } = jwt.verify(token, process.env.TOKEN_SECRET);
 
-        //console.log(userId);
-
         res.locals.userId = userId;
         next();
 

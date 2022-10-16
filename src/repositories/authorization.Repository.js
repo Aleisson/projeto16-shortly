@@ -50,4 +50,10 @@ async function updateSession(id, token) {
 }
 
 
-export { insertUsers, selectUsers, insertSession, selectSessionId, updateSession }
+export {
+    insertUsers,
+    selectUsers,
+    insertSession,
+    selectSessionId,
+    updateSession
+}

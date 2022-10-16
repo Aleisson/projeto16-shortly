@@ -2,8 +2,10 @@ CREATE TABLE
   "urls"(
     "id" SERIAL PRIMARY KEY,
     "userId" INTEGER REFERENCES users(id),
-    "url" TEXT NOT NULL,
-    "short_url" VARCHAR(10) NOT NULL
+    "url" TEXT UNIQUE NOT NULL,
+    "short_url" VARCHAR(10) NOT NULL,
+    "visite_count" INTEGER DEFAULT 0,
+    "creatAt" TIMESTAMP DEFAULT  CURRENT_TIMESTAMP
   );
 
 -- INSERT INTO

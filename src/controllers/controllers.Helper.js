@@ -38,13 +38,25 @@ function updateResponse(res, body) {
 }
 
 
+function redirectResponse(res, url) {
+
+    return res.redirect(url);
+
+}
+
+function noContentResponse(res){
+    return res.sendStatus(STATUS_CODE.NOT_CONTENT);
+}
+
 export {
     serverError,
     okResponse,
     badResquestResponse,
     createResponse,
     notImplemented,
-    updateResponse
+    updateResponse,
+    redirectResponse,
+    noContentResponse
 }
 
 // const token = req.headers.authorization?.replace('Bearer ', '')

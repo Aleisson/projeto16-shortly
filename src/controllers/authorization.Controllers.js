@@ -36,13 +36,13 @@ async function signIn(req, res) {
        const sessionCheck = await repository.selectSessionId(id);
         if (sessionCheck.rowCount) {
             await repository.updateSession(id, token);
-            return helper.updateResponse(res, { message: 'Update' });
+            return helper.updateResponse(res, { token });
         }
 
 
         const response = await repository.insertSession(id, token);
         if (response.rowCount) {
-            return helper.createResponse(res, { message: 'Created' });
+            return helper.createResponse(res, { token });
         }
         return helper.badResquestResponse(res, { message: 'Erro nos parametros' });
     } catch (error) {
