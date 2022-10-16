@@ -3,3 +3,4 @@ Neste projeto você deve implementar o back-end, modelar e criar o banco de dado
 Variáveis de ambiente:
 PORT= Se refere a porta que onde fazemos o deploy.
 DATABASE_URL= Se referea a porta onde fazemos a conexão com BD.
+TOKEN_SECRET= é palavra chave para gerar os tokens usando JWT;
