@@ -31,6 +31,20 @@ function createResponse(res, body) {
 
 }
 
-export { serverError, okResponse, badResquestResponse, createResponse, notImplemented }
+function updateResponse(res, body) {
+
+    return res.status(STATUS_CODE.OK).send(body);
+
+}
+
+
+export {
+    serverError,
+    okResponse,
+    badResquestResponse,
+    createResponse,
+    notImplemented,
+    updateResponse
+}
 
 // const token = req.headers.authorization?.replace('Bearer ', '')

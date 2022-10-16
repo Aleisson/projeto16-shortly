@@ -36,7 +36,6 @@ function conflictResponse(res) {
 
 }
 
-
 function unauthorizedResponse(res) {
     return res.sendStatus(STATUS_CODE.UNAUTHORIZED);
 }
@@ -48,5 +47,9 @@ export {
     badResquestResponse,
     unprocessableEntityResponse,
     conflictResponse,
-    unauthorizedResponse
+    unauthorizedResponse,
+  
 }
+
+//const decode = jwt.verify(token, process.env.TOKEN_SECRET);
+    // console.log(decode.userId);

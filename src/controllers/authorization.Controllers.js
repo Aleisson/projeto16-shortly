@@ -23,16 +23,31 @@ async function signUp(req, res) {
 }
 
 async function signIn(req, res) {
-    console.log(process.env.TOKEN_SECRET);
+
+    const { id } = res.locals.user;
+
     const token = jwt.sign(
-        { userId: 1 },
+        { userId: id },
         process.env.TOKEN_SECRET,
         { expiresIn: '6h' }
     );
-    console.log(token);
-    const decode = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(decode.userId);
-    return res.send({ id: decode.userId });
+
+    try {
+       const sessionCheck = await repository.selectSessionId(id);
+        if (sessionCheck.rowCount) {
+            await repository.updateSession(id, token);
+            return helper.updateResponse(res, { message: 'Update' });
+        }
+
+
+        const response = await repository.insertSession(id, token);
+        if (response.rowCount) {
+            return helper.createResponse(res, { message: 'Created' });
+        }
+        return helper.badResquestResponse(res, { message: 'Erro nos parametros' });
+    } catch (error) {
+        return helper.serverError(res, error);
+    }
 
 }
 

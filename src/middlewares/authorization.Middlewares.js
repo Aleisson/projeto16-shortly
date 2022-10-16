@@ -1,6 +1,7 @@
 import * as helper from './middlewares.Helper.js';
 import * as repository from '../repositories/authorization.Repository.js'
 import { singUpSchema, signInSchema } from '../schemas/authotizantion.Schemas.js';
+import bcrypt from 'bcrypt';
 
 
 
@@ -57,15 +58,21 @@ async function signIn(req, res, next) {
     try {
 
         const user = await repository.selectUsers(email);
-  
-        if(!user.rowCount){
+
+        if (!user.rowCount) {
+            return helper.unauthorizedResponse(res);
+        }
+
+        const { hash_password } = user.rows.at(0);
+
+        const passwordValid = bcrypt.compareSync(password, hash_password);
+
+        if (!passwordValid) {
             return helper.unauthorizedResponse(res);
         }
 
 
-
-
-        res,locals.user = req.body;
+        res.locals.user = user.rows.at(0);
         next();
     } catch (error) {
         return helper.serverError(res, error);
