@@ -36,4 +36,17 @@ function conflictResponse(res) {
 
 }
 
-export { notImplemented, filterBearer, serverError,badResquestResponse, unprocessableEntityResponse, conflictResponse }
+
+function unauthorizedResponse(res) {
+    return res.sendStatus(STATUS_CODE.UNAUTHORIZED);
+}
+
+export {
+    notImplemented,
+    filterBearer,
+    serverError,
+    badResquestResponse,
+    unprocessableEntityResponse,
+    conflictResponse,
+    unauthorizedResponse
+}

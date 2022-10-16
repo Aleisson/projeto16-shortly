@@ -1,6 +1,6 @@
 import * as helper from './middlewares.Helper.js';
 import * as repository from '../repositories/authorization.Repository.js'
-import { singUpSchema } from '../schemas/authotizantion.Schemas.js';
+import { singUpSchema, signInSchema } from '../schemas/authotizantion.Schemas.js';
 
 
 
@@ -18,13 +18,15 @@ async function signUp(req, res, next) {
 
     const { email } = req.body;
     try {
-        
+
         const checkEmail = await repository.selectUsers(email);
-      
-       
+
+
         if (checkEmail.rowCount) {
             return helper.conflictResponse(res);
         }
+
+
 
         res.locals.user = req.body;
         next();
@@ -40,9 +42,36 @@ async function signUp(req, res, next) {
 async function signIn(req, res, next) {
 
 
-    //return helper.notImplemented(res);
+    const isValidBody = signInSchema.validate(req.body, { abortEarly: false });
 
-    next();
+    if (isValidBody.error) {
+        return helper.unprocessableEntityResponse(res, isValidBody
+            .error
+            .details
+            .map(elem => elem.message));
+    };
+
+
+    const { email, password } = req.body;
+
+    try {
+
+        const user = await repository.selectUsers(email);
+  
+        if(!user.rowCount){
+            return helper.unauthorizedResponse(res);
+        }
+
+
+
+
+        res,locals.user = req.body;
+        next();
+    } catch (error) {
+        return helper.serverError(res, error);
+    }
+
+
 
 }
 

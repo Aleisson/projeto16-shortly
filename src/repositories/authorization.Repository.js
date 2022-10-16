@@ -12,7 +12,6 @@ async function selectUsers(email) {
 }
 
 
-
 async function insertUsers(name, email, passwordHash) {
 
     return connection
