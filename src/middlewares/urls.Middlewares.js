@@ -11,7 +11,7 @@ async function urlsShorten(req, res, next) {
     }
 
     
-  
+    res.locals.url = req.body;
     next();
 }
 

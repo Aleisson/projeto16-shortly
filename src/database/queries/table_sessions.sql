@@ -1,9 +1,11 @@
-CREATE TABLE "sessions"(
+CREATE TABLE
+  "sessions"(
     "id" serial PRIMARY KEY,
     "userId" INTEGER REFERENCES users(id),
-    "token" TEXT  NOT NULL,
+    "token" TEXT UNIQUE NOT NULL,
     "valid" BOOLEAN DEFAULT TRUE
-);
+  );
+
 -- INSERT INTO
 --   sessions("userId", "token")
 -- VALUES
