@@ -27,20 +27,21 @@ async function postUrlsShorten(req, res) {
 
 async function getUrlsId(req, res) {
 
-    return notImplemented(res);
+    const { id, short_url, url } = res.locals.url;
 
+    return helper.okResponse(res, { id, shortUrl: short_url, url })
 }
 
 async function getUrlsOpenShortUrl(req, res) {
 
-    return notImplemented(res);
+    return helper.notImplemented(res);
 
 }
 
 
 async function deleteUrlsId(req, res) {
 
-    return notImplemented(res);
+    return helper.notImplemented(res);
 
 }
 

@@ -40,6 +40,10 @@ function unauthorizedResponse(res) {
     return res.sendStatus(STATUS_CODE.UNAUTHORIZED);
 }
 
+function notFoundReponse(res){
+    return res.sendStatus(STATUS_CODE.NOT_FOUND);
+}
+
 export {
     notImplemented,
     filterBearer,
@@ -48,6 +52,7 @@ export {
     unprocessableEntityResponse,
     conflictResponse,
     unauthorizedResponse,
+    notFoundReponse
   
 }
 

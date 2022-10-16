@@ -17,7 +17,7 @@ async function insertUsers(name, email, passwordHash) {
     return connection
         .query(`INSERT INTO ${TABLES_NAMES.USERS} 
                         (name, email, hash_password)
-               VALUES($1, $2, $3)`,
+               VALUES($1, $2, $3);`,
             [name, email, passwordHash]);
 
 }
@@ -27,7 +27,7 @@ async function insertSession(userId, token) {
     return connection
         .query(`INSERT INTO ${TABLES_NAMES.SESSION}
                         ("userId", token)
-                VALUES($1, $2)`,
+                VALUES($1, $2);`,
             [userId, token]);
 
 }

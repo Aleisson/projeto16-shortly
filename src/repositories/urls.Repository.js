@@ -6,10 +6,21 @@ async function insertUrls(userId, url, shortUrl) {
     return connection
         .query(`INSERT INTO "urls"("userId", "url", "short_url")
                 VALUES
-                ($1, $2, $3)`,
+                ($1, $2, $3);`,
             [userId, url, shortUrl])
 
 
 }
 
-export { insertUrls }
+
+async function selectUrlsId(id) {
+
+    return connection
+        .query(`SELECT * FROM ${TABLES_NAMES.URLS}
+                WHERE id = $1 ;` , [id]);
+
+
+}
+
+
+export { insertUrls, selectUrlsId }
