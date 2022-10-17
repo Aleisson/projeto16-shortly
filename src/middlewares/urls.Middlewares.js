@@ -4,7 +4,7 @@ import { urlSchema } from "../schemas/urls.Schema.js";
 
 async function urlsShorten(req, res, next) {
 
-
+    const userId = res.locals.userId
     const validUrl = urlSchema.validate(req.body);
 
     if (validUrl.error) {
@@ -12,13 +12,14 @@ async function urlsShorten(req, res, next) {
     }
 
     const { url } = req.body;
+    console.log(userId);
     try {
 
-        // const response = await repository.selectUrl(url)
+        const response = await repository.selectUrl(url, userId)
 
-        // if (response.rowCount) {
-        //     return helper.conflictResponse(res);
-        // }
+        if (response.rowCount) {
+            return helper.conflictResponse(res);
+        }
 
     } catch (error) {
         return helper.serverError(res, error);

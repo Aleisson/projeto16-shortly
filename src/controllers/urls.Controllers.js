@@ -66,7 +66,6 @@ async function deleteUrlsId(req, res) {
         return helper.serverError(res, error);
     }
 
-    return helper.notImplemented(res);
 
 }
 

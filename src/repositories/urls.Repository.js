@@ -12,10 +12,10 @@ async function insertUrls(userId, url, shortUrl) {
 
 }
 
-async function selectUrl(url) {
+async function selectUrl(url, userId) {
     return connection
         .query(`SELECT * FROM ${TABLES_NAMES.URLS}
-            WHERE url = $1 ;` , [url]);
+            WHERE url = $1 AND "userId" = $2 ;` , [url, userId]);
 }
 
 
