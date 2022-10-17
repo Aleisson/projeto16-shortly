@@ -1,4 +1,5 @@
-Neste projeto você deve implementar o back-end, modelar e criar o banco de dados (relacional) de um sistema encurtador de URLs chamado Shortly: Links que cabem no bolso!
+Neste projeto você deve implementar o back-end, modelar e criar o banco de dados (relacional)
+ de um sistema encurtador de URLs chamado Shortly: Links que cabem no bolso!
 
 Variáveis de ambiente:
 PORT= Se refere a porta que onde fazemos o deploy.
