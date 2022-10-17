@@ -1,8 +1,8 @@
 CREATE TABLE
   users (
     id serial PRIMARY KEY,
-    name character varying(80) NOT NULL,
-    email character UNIQUE varying(120) NOT NULL,
+    name VARCHAR(80) NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
     hash_password text NOT NULL,
     "creatAt" TIMESTAMP DEFAULT  CURRENT_TIMESTAMP
   );
