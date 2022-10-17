@@ -7,7 +7,7 @@ async function postUrlsShorten(req, res) {
     const userId = res.locals.userId;
     const { url } = res.locals.url;
     const shortUrl = nanoid(8);
-    console.log(url);
+    //console.log(url);
     try {
 
         const response = await repository.insertUrls(userId, url, shortUrl);
@@ -33,11 +33,11 @@ async function getUrlsId(req, res) {
 async function getUrlsOpenShortUrl(req, res) {
 
     const { id, url, visite_count } = res.locals.url;
-
+    console.log(url);
     try {
 
         const response = await repository.updateVisite(id, visite_count);
-
+        
         if (response.rowCount) {
             return helper.redirectResponse(res, url);
         }

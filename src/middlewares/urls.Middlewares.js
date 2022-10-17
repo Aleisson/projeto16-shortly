@@ -14,11 +14,11 @@ async function urlsShorten(req, res, next) {
     const { url } = req.body;
     try {
 
-        const response = await repository.selectUrl(url)
+        // const response = await repository.selectUrl(url)
 
-        if (response.rowCount) {
-            return helper.conflictResponse(res);
-        }
+        // if (response.rowCount) {
+        //     return helper.conflictResponse(res);
+        // }
 
     } catch (error) {
         return helper.serverError(res, error);
