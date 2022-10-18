@@ -68,4 +68,4 @@ export {
     updateVisite,
     selectUrlIdUserId,
     deleteUrls
-}
+};

@@ -57,6 +57,5 @@ export {
     updateResponse,
     redirectResponse,
     noContentResponse
-}
+};
 
-// const token = req.headers.authorization?.replace('Bearer ', '')

@@ -1,5 +1,5 @@
 import * as helper from "./middlewares.Helper.js";
-import * as repository from '../repositories/urls.Repository.js'
+import * as repository from '../repositories/urls.Repository.js';
 import { urlSchema } from "../schemas/urls.Schema.js";
 
 async function urlsShorten(req, res, next) {
@@ -98,4 +98,4 @@ export {
     urlsId,
     urlsOpenShortUrl,
     deleteUrlsId
-}
+};

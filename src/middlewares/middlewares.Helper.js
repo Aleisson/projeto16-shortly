@@ -54,7 +54,7 @@ export {
     unauthorizedResponse,
     notFoundReponse
   
-}
+};
 
 //const decode = jwt.verify(token, process.env.TOKEN_SECRET);
     // console.log(decode.userId);

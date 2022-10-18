@@ -1,5 +1,5 @@
 import connection from "../database/database.js";
-import { TABLES_NAMES } from "../Enums/tablesNames.Enum.js";
+
 
 async function selectRanking() {
 
@@ -19,4 +19,4 @@ async function selectRanking() {
 
 }
 
-export { selectRanking }
+export { selectRanking };

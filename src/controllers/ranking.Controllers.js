@@ -1,5 +1,5 @@
-import * as helper from './controllers.Helper.js'
-import * as repository from '../repositories/ranking.Repository.js'
+import * as helper from './controllers.Helper.js';
+import * as repository from '../repositories/ranking.Repository.js';
 
 
 async function getRanking(req, res) {
@@ -13,15 +13,15 @@ async function getRanking(req, res) {
                 linksCount:elem.conta_urls,
                 visitCount:elem.soma_visita
 
-            })))
+            })));
         }
         return helper.badResquestResponse(res, { message: 'Erro servidor' });
 
     } catch (error) {
-
+        return helper.serverError(res, error);
     }
 
 
 }
 
-export { getRanking }
+export { getRanking };

@@ -1,5 +1,5 @@
 import * as helper from "./middlewares.Helper.js";
-import * as repository from '../repositories/users.Repository.js'
+import * as repository from '../repositories/users.Repository.js';
 
 async function getUserMe(req, res, next) {
 
@@ -19,4 +19,4 @@ async function getUserMe(req, res, next) {
     }
 }
 
-export { getUserMe }
+export { getUserMe };

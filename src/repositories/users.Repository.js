@@ -28,4 +28,4 @@ async function selectUrlsSum(userId) {
 }
 
 
-export { selectUsersId, selectUrlsUserId, selectUrlsSum }
+export { selectUsersId, selectUrlsUserId, selectUrlsSum };

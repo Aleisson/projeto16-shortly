@@ -1,5 +1,5 @@
-import * as helper from './controllers.Helper.js'
-import * as repository from '../repositories/urls.Repository.js'
+import * as helper from './controllers.Helper.js';
+import * as repository from '../repositories/urls.Repository.js';
 import { nanoid } from 'nanoid';
 
 async function postUrlsShorten(req, res) {
@@ -7,7 +7,7 @@ async function postUrlsShorten(req, res) {
     const userId = res.locals.userId;
     const { url } = res.locals.url;
     const shortUrl = nanoid(8);
-    //console.log(url);
+ 
     try {
 
         const response = await repository.insertUrls(userId, url, shortUrl);
@@ -28,7 +28,7 @@ async function getUrlsId(req, res) {
     const { id, short_url, url } = res.locals.url;
 
     return helper.okResponse(res, { id, shortUrl: short_url, url })
-}
+};
 
 async function getUrlsOpenShortUrl(req, res) {
 
@@ -69,4 +69,4 @@ async function deleteUrlsId(req, res) {
 
 }
 
-export { postUrlsShorten, getUrlsId, getUrlsOpenShortUrl, deleteUrlsId }
+export { postUrlsShorten, getUrlsId, getUrlsOpenShortUrl, deleteUrlsId };

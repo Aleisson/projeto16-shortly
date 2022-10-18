@@ -1,5 +1,5 @@
 import * as helper from './middlewares.Helper.js';
-import * as repository from '../repositories/authorization.Repository.js'
+import * as repository from '../repositories/authorization.Repository.js';
 import { singUpSchema, signInSchema } from '../schemas/authotizantion.Schemas.js';
 import bcrypt from 'bcrypt';
 
@@ -82,4 +82,4 @@ async function signIn(req, res, next) {
 
 }
 
-export { signUp, signIn }
+export { signUp, signIn };

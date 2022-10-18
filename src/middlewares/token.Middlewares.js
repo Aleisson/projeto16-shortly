@@ -21,4 +21,4 @@ async function tokenAuthorization(req, res, next) {
 
 }
 
-export { tokenAuthorization }
+export { tokenAuthorization };

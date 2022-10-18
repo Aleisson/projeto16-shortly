@@ -4,4 +4,4 @@ const TABLES_NAMES = Object.freeze({
     URLS:"urls"
 });
 
-export { TABLES_NAMES }
+export { TABLES_NAMES };

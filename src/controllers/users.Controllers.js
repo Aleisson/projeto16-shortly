@@ -37,4 +37,4 @@ async function getUsersMe(req, res) {
 
 }
 
-export { getUsersMe }
+export { getUsersMe };
